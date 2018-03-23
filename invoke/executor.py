@@ -200,7 +200,9 @@ class Executor(object):
             # TODO: we _probably_ don't even want the config in here anymore,
             # we want this to _just_ be about the recursion across pre/post
             # tasks or parameterization...?
-            ret.extend(self.expand_calls(call.pre))
+            if not getattr(self.config.tasks, "skip_pre", False):
+                ret.extend(self.expand_calls(call.pre))
             ret.append(call)
-            ret.extend(self.expand_calls(call.post))
+            if not getattr(self.config.tasks, "skip_post", False):
+                ret.extend(self.expand_calls(call.post))
         return ret

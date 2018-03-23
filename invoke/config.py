@@ -482,6 +482,8 @@ class Config(DataProxy):
             },
             'tasks': {
                 'dedupe': True,
+                'skip_pre': False,
+                'skip_post': False,
                 'auto_dash_names': True,
                 'collection_name': 'tasks',
                 'search_root': None,

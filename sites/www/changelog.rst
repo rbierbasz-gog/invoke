@@ -7,6 +7,8 @@ Changelog
   API of `~invoke.parser.context.ParserContext`, namely changing
   ``needs_positional_arguments`` (bool) to ``missing_positional_arguments``
   (list).
+* :feature:`-` Add --skip-pre and --skip-post flags for skipping pre-tasks and
+  post-tasks execution.
 * :release:`0.22.1 <2018-01-29>`
 * :bug:`342` Accidentally hardcoded ``Collection`` instead of ``cls`` in
   `Collection.from_module <invoke.collection.Collection.from_module>` (an

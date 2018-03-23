@@ -122,7 +122,20 @@ class Program(object):
                 names=('root', 'r'),
                 help="Change root directory used for finding task modules."
             ),
+            Argument(
+                names=('skip-pre',),
+                kind=bool,
+                default=False,
+                help="Skip pre-tasks execution."
+            ),
+            Argument(
+                names=('skip-post',),
+                kind=bool,
+                default=False,
+                help="Skip post-tasks execution."
+            ),
         ]
+
 
     # Other class-level global variables a subclass might override sometime
     # maybe?
@@ -243,6 +256,10 @@ class Program(object):
         tasks = {}
         if 'no-dedupe' in self.args and self.args['no-dedupe'].value:
             tasks['dedupe'] = False
+        if 'skip-pre' in self.args and self.args['skip-pre'].value:
+            tasks['skip_pre'] = True
+        if 'skip-post' in self.args and self.args['skip-post'].value:
+            tasks['skip_post'] = True
         self.config.load_overrides({'run': run, 'tasks': tasks}, merge=False)
         self.config.set_runtime_path(self.args.config.value)
         self.config.load_runtime(merge=False)

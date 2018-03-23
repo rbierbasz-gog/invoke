@@ -413,6 +413,8 @@ Core options:
                                    parse remainder.
   --hide=STRING                    Set default value of run()'s 'hide' kwarg.
   --no-dedupe                      Disable task deduplication.
+  --skip-post                      Skip post-tasks execution.
+  --skip-pre                       Skip pre-tasks execution.
   --write-pyc                      Enable creation of .pyc files.
   -c STRING, --collection=STRING   Specify collection name to load.
   -d, --debug                      Enable debug output.

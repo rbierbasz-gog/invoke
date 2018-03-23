@@ -125,6 +125,25 @@ class Executor_(IntegrationSpec):
         def call_objs_play_well_with_context_args(self):
             self._call_objs()
 
+        def skip_pre_tasks(self):
+            expect('-c integration --skip-pre biz', out="""
+biz
+post1
+post2
+""".lstrip())
+
+        def skip_post_tasks(self):
+            expect('-c integration --skip-post biz', out="""
+foo
+bar
+biz
+""".lstrip())
+
+        def skip_pre_and_post_tasks(self):
+            expect('-c integration --skip-pre --skip-post biz', out="""
+biz
+""".lstrip())
+
     class deduping_and_chaining:
         def chaining_is_depth_first(self):
             expect('-c depth_first deploy', out="""
